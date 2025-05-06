@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Novi Marcelimah</title>
+    <link rel="stylesheet" href="portofolio.css">
+</head>
+<body class="light-mode">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang Saya</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#experience">Pengalaman</a></li>
+                <li><a href="#education">Pendidikan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="content">
+            <div class="text">
+                <h1>Hello!</h1>
+                <h2>Saya Novi Marcelimah</h2>
+                <p>Professional Quality Assurance|| Document Control Officer || Internal Auditor</p>
+                <a href="#about" class="btn">See More</a>
+            </div>
+            <div class="image">
+                <img src="Novii.jpg" alt="Ihsan Maulana" width="400">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Tentang Saya</h2>
+				<hr>
+                <p>Saya adalah seorang profesional Quality Assurance dengan pengalaman sebagai Document Control Officer dan Internal Auditor. Berpengalaman dalam memastikan kepatuhan terhadap standar manajemen mutu serta mendokumentasikan dan mengelola proses sesuai dengan kebijakan perusahaan. Memiliki kemampuan dalam melakukan audit internal untuk mengidentifikasi area peningkatan dan memastikan implementasi sistem manajemen yang efektif. Saya juga terbiasa bekerja secara detail, teliti, dan konsisten dalam mengelola dokumen serta memverifikasi kesesuaian prosedur operasional dengan standar yang ditetapkan.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="experience-section">
+        <div class="experience-content">
+            <div class="experience-text">
+                <h2>Keahlian</h2>
+                <hr>
+                <div class="experience-content" style="display: flex; gap: 20px;">
+                    <div style="width: 50%;">
+                        <ul>
+                            <li>Microsoft Word</li>
+                            <li>Microsoft Excel</li>
+                            <li>Power Point</li>
+                            <li>Keamanan Informasi</li>
+                        </ul>
+                    </div>
+                    <div class="experience-content" style="width: 50%;">
+                        <ul>
+                            <li>Dapat berkomunikasi dengan baik</li>
+                            <li>Paham terkait dokumen dan pengelolaan informasi</li>
+                            <li>Keterampilan administrasi</li>
+                            <li>Paham terkait Internal Audit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="experience" class="experience-section">
+        <div class="experience-content">
+            <div class="experience-text">
+                <h2>Pengalaman Kerja</h2>
+                <h3>PT. EWINDO WIRING HERNES</h3>
+                <h4>Juli 2023 - Oktober 2024</h4>
+                <hr>
+                <h3>Staff Quality Assurance</h4>
+				
+                <div class="experience-content" style="display: flex; gap: 20px;">
+                    <div style="width: 50%;">
+                        <ul>
+                            <li>Mengumpulkan dokumen dari all departemen</li>
+                            <li>Memverifikasi kelengkapan dan keabsahan dokumen</li>
+                            <li>Mengatur dan mengklasifikasikan dokumen</li>
+                            <li>Mengatur distribusi dokumen</li>
+                        </ul>
+                    </div>
+                    <div class="experience-content" style="width: 50%;">
+                        <ul>
+                            <li>Memastikan dokumen disahkan sebelum didistribusikan</li>
+                            <li>Memastikan dokumen kadaluarsa dimusnahkan</li>
+                            <li>Memperbarui dokumen jika ada perubahan</li>
+                            <li>Melakukan Internal Audit sesuai jadwal</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <label class="switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider"></span>
+    </label>
+    
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const sections = document.querySelectorAll('.hero-section, .about-section, .software-section');
+		const options = { root: null, rootMargin: '0px', threshold: 0.1 }; 
+		const observer = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { 
+			if (entry.isIntersecting) { 				entry.target.classList.add('visible'); 		observer.unobserve(entry.target); } });
+		}, options);
+		sections.forEach(section => { observer.observe(section);
+		});
+	const navLinks = document.querySelectorAll('nav ul li a'); 
+		navLinks.forEach(link => { link.addEventListener('click', (event) => { event.preventDefault();
+			const targetId = event.target.getAttribute('href').substring(1); 
+			const targetSection = document.getElementById(targetId); window.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth'
+	});
+  });
+});
+});
+document.getElementById("theme-toggle").addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("light-mode");
+});
+
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    let name = document.getElementById("name").value;
+    let message = document.getElementById("message").value;
+    console.log(`Pesan dari ${name}: ${message}`);
+});
+
+document.querySelectorAll("#rating span").forEach(star => {
+    star.addEventListener("click", function() {
+        let selectedRating = this.getAttribute("data-star");
+        document.getElementById("rating-info").textContent = `Rating: ${selectedRating} dari 5 bintang`;
+    });
+});
+	</script>
+</body>
+</html>
